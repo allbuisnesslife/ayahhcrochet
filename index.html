@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maktab Mouride Style - Boutique</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gd:#1a472a;--gm:#2d5f3d;--gl:#4a8c5c;--gold:#c9a84c;--goldl:#f0d080;--cream:#f4e4c1;--creaml:#fdf6e9;--muted:#6b7280;--sh:0 4px 24px rgba(26,71,42,.13);--shh:0 12px 40px rgba(26,71,42,.22);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--creaml);color:#1c1c1c;min-height:100vh;}
+/* TOPBAR */
+.stbar{background:#0d1f13;border-bottom:1px solid rgba(201,168,76,.2);padding:.5rem 2rem;}
+.stinner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+.stag{font-size:.78rem;color:rgba(201,168,76,.65);font-weight:600;}
+.slinks{display:flex;gap:.5rem;}
+.slink{display:flex;align-items:center;gap:.4rem;padding:.28rem .85rem;border-radius:20px;font-size:.78rem;font-weight:700;text-decoration:none;transition:all .2s;border:1px solid transparent;}
+.slink.wa{background:rgba(37,211,102,.12);color:#25d366;border-color:rgba(37,211,102,.25);}
+.slink.wa:hover{background:#25d366;color:white;transform:translateY(-1px);}
+.slink.tt{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.1);}
+.slink.tt:hover{background:#010101;color:#69c9d0;border-color:#69c9d0;}
+.slink.ig{background:rgba(225,48,108,.1);color:#e1306c;border-color:rgba(225,48,108,.25);}
+.slink.ig:hover{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;border-color:transparent;}
+/* HEADER */
+header{background:linear-gradient(135deg,var(--gd),var(--gm));position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.25);}
+nav{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo{display:flex;align-items:center;gap:.8rem;cursor:pointer;}
+.logo-icon{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;color:var(--cream);}
+.logo-ar{font-size:.8rem;color:var(--goldl);letter-spacing:1px;}
+.nav-links{display:flex;gap:.3rem;list-style:none;}
+.nav-links a{color:var(--cream);text-decoration:none;font-weight:600;padding:.45rem .9rem;border-radius:8px;transition:all .2s;cursor:pointer;font-size:.92rem;}
+.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.15);color:var(--goldl);}
+.cart-btn{background:var(--gold);color:var(--gd);border:none;padding:.5rem 1.2rem;border-radius:30px;font-weight:700;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;font-family:'Nunito',sans-serif;}
+.cbadge{background:var(--gd);color:white;border-radius:50%;width:19px;height:19px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;}
+/* PAGES */
+.page{display:none;}.page.active{display:block;}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--gd) 0%,var(--gm) 60%,var(--gl) 100%);padding:5rem 2rem 4rem;text-align:center;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:3.6rem;color:var(--cream);margin-bottom:.4rem;}
+.hero-ar{font-size:1.7rem;color:var(--gold);margin-bottom:.8rem;}
+.hero p{font-size:1.1rem;color:rgba(244,228,193,.85);margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--gd);border:none;padding:.85rem 2.2rem;border-radius:30px;font-weight:700;font-size:1rem;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .25s;}
+.btn-gold:hover{background:var(--goldl);transform:translateY(-3px);}
+.btn-out{background:transparent;color:var(--cream);border:2px solid var(--cream);padding:.85rem 2.2rem;border-radius:30px;font-weight:700;font-size:1rem;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .25s;}
+.btn-out:hover{background:var(--cream);color:var(--gd);}
+/* SECTION */
+.section{max-width:1300px;margin:0 auto;padding:3.5rem 2rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gd);text-align:center;margin-bottom:.4rem;}
+.sec-line{width:55px;height:3px;background:var(--gold);margin:0 auto 2.8rem;border-radius:2px;}
+/* CATEGORIES */
+.col-section{padding:1.5rem 0 2rem;overflow:hidden;}
+.col-track-wrap{overflow:hidden;position:relative;}
+.col-track-wrap::before,.col-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:10;pointer-events:none;}
+.col-track-wrap::before{left:0;background:linear-gradient(to right,var(--creaml) 30%,transparent);}
+.col-track-wrap::after{right:0;background:linear-gradient(to left,var(--creaml) 30%,transparent);}
+.col-track{display:flex;gap:1.6rem;padding:1rem 120px;width:max-content;animation:scrollCols 28s linear infinite;}
+.col-track:hover{animation-play-state:paused;}
+@keyframes scrollCols{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.col-card{width:230px;height:310px;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;flex-shrink:0;box-shadow:0 6px 28px rgba(26,71,42,.22);transition:transform .3s,box-shadow .3s;background:#1a472a;}
+.col-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 18px 48px rgba(26,71,42,.32);}
+.col-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.col-card:hover img{transform:scale(1.09);}
+.col-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,20,10,.88) 0%,rgba(5,20,10,.15) 50%,transparent 100%);}
+.col-label{position:absolute;bottom:0;left:0;right:0;padding:1.3rem 1.1rem;z-index:2;}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.25rem;}
+.col-count{font-size:.75rem;color:rgba(201,168,76,.95);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.col-arrow{position:absolute;top:.9rem;right:.9rem;width:30px;height:30px;background:rgba(201,168,76,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;z-index:2;}
+.col-card:hover .col-arrow{opacity:1;}
+/* FEATURES */
+.fstrip{background:var(--gd);padding:2.5rem 2rem;}
+.finner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;}
+.ficon{font-size:1.9rem;margin-bottom:.4rem;}
+.fitem h3{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:.2rem;}
+.fitem p{color:var(--cream);font-size:.85rem;opacity:.85;}
+/* SHOP */
+.shop-head{background:linear-gradient(135deg,var(--gd),var(--gm));padding:2.8rem 2rem;text-align:center;}
+.shop-head h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--cream);}
+.shop-head p{color:var(--goldl);margin-top:.4rem;}
+.filter-bar{background:white;border-radius:16px;padding:1.1rem 1.4rem;margin:1.8rem 0 0;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;box-shadow:var(--sh);}
+.fbtn{padding:.45rem 1.2rem;border:2px solid var(--gd);background:white;color:var(--gd);border-radius:25px;cursor:pointer;font-weight:700;font-size:.88rem;font-family:'Nunito',sans-serif;transition:all .2s;}
+.fbtn.active,.fbtn:hover{background:var(--gd);color:var(--cream);}
+.search-wrap{display:flex;align-items:center;background:white;border:2px solid var(--gd);border-radius:30px;overflow:hidden;max-width:320px;margin:1.2rem auto 0;}
+.search-wrap input{flex:1;border:none;padding:.55rem 1rem;font-size:.92rem;font-family:'Nunito',sans-serif;outline:none;}
+.search-wrap button{background:var(--gd);color:white;border:none;padding:.55rem 1rem;cursor:pointer;}
+/* GRILLE PRODUITS */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.8rem;margin-top:2rem;}
+.pcard{background:white;border-radius:18px;overflow:hidden;box-shadow:var(--sh);transition:all .3s;position:relative;display:flex;flex-direction:column;}
+.pcard:hover{transform:translateY(-6px);box-shadow:var(--shh);}
+.pbadge{position:absolute;top:.9rem;right:.9rem;padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:700;z-index:10;text-transform:uppercase;background:var(--gold);color:var(--gd);}
+.pimg{width:100%;height:255px;overflow:hidden;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.pcard:hover .pimg img{transform:scale(1.06);}
+.pemoji{font-size:5rem;color:var(--cream);}
+.pinfo{padding:1.3rem;flex:1;display:flex;flex-direction:column;}
+.pcat{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:700;margin-bottom:.3rem;}
+.pname{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gd);font-weight:700;margin-bottom:.3rem;}
+.par{font-size:.98rem;color:var(--gm);margin-bottom:.4rem;}
+.pdesc{font-size:.85rem;color:var(--muted);flex:1;margin-bottom:.9rem;}
+.pprice{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;color:var(--gd);margin-bottom:.9rem;}
+.pactions{display:flex;gap:.6rem;}
+.badd{flex:1;background:var(--gd);color:var(--cream);border:none;border-radius:9px;padding:.65rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.88rem;transition:all .2s;}
+.badd:hover{background:var(--gm);}
+.bview{background:white;color:var(--gd);border:2px solid var(--gd);border-radius:9px;padding:.65rem .9rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.88rem;transition:all .2s;}
+.bview:hover{background:var(--gd);color:var(--cream);}
+/* EMPTY */
+.noprod{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px dashed var(--gl);border-radius:16px;padding:3rem 2rem;text-align:center;grid-column:1/-1;}
+.noprod h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gd);margin-bottom:.5rem;}
+.noprod p{color:var(--muted);margin-bottom:1rem;}
+.noprod a{color:var(--gd);font-weight:700;text-decoration:underline;}
+/* PANIER */
+.cart-wrap{max-width:880px;margin:0 auto;padding:3rem 2rem;}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gd);margin-bottom:2rem;}
+.cart-box{background:white;border-radius:18px;overflow:hidden;box-shadow:var(--sh);margin-bottom:1.5rem;}
+.crow{display:grid;grid-template-columns:85px 1fr auto;gap:1.1rem;padding:1.2rem 1.5rem;border-bottom:1px solid #f0f0f0;align-items:center;}
+.crow:last-child{border-bottom:none;}
+.cthumb{width:85px;height:85px;border-radius:10px;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--cream);overflow:hidden;flex-shrink:0;}
+.cthumb img{width:100%;height:100%;object-fit:cover;}
+.cpname{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gd);font-weight:600;}
+.qctrl{display:flex;align-items:center;gap:.65rem;margin:.45rem 0;}
+.qbtn{width:26px;height:26px;border:2px solid var(--gd);background:white;border-radius:6px;cursor:pointer;font-weight:700;color:var(--gd);}
+.qnum{font-weight:700;min-width:22px;text-align:center;}
+.rmbtn{color:#dc2626;cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:underline;background:none;border:none;font-family:'Nunito',sans-serif;}
+.cprice{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gd);white-space:nowrap;}
+.cart-sum{background:white;border-radius:18px;padding:2rem;box-shadow:var(--sh);}
+.srow{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid #f0f0f0;font-size:.98rem;}
+.stotal{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gd);border:none!important;}
+.ckbtn{width:100%;margin-top:1.4rem;background:var(--gd);color:var(--cream);border:none;border-radius:12px;padding:1.05rem;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;}
+.wabtn{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;margin-top:.8rem;padding:1rem;background:#25d366;color:white;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;border:none;font-family:'Nunito',sans-serif;}
+.empty-cart{text-align:center;padding:4rem 2rem;background:white;border-radius:16px;box-shadow:var(--sh);}
+.empty-cart h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gd);margin-bottom:.5rem;}
+.empty-cart p{color:var(--muted);margin-bottom:1.5rem;}
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;overflow-y:auto;}
+.modal-box{background:white;max-width:780px;margin:3% auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.mtop{background:linear-gradient(135deg,var(--gd),var(--gm));padding:1.6rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.mtop h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--cream);}
+.mclose{background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer;line-height:1;}
+.mbody{padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.mimg{width:100%;height:310px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-size:5rem;color:var(--cream);}
+.mimg img{width:100%;height:100%;object-fit:cover;}
+.wa-modal{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;margin-top:.7rem;padding:.9rem;background:#25d366;color:white;border-radius:12px;font-weight:700;font-size:.98rem;text-decoration:none;}
+/* ABOUT / CONTACT */
+.abt-hero{background:linear-gradient(135deg,var(--gd),var(--gm));padding:3.5rem 2rem;text-align:center;}
+.abt-hero h1{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--cream);}
+.abt-hero p{color:var(--gold);font-size:1.35rem;margin-top:.4rem;}
+.val-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.8rem;margin-top:3rem;}
+.vcard{background:white;border-radius:16px;padding:1.8rem 1.4rem;text-align:center;box-shadow:var(--sh);}
+.vcard .vi{font-size:2.3rem;margin-bottom:.7rem;}
+.vcard h3{font-family:'Cormorant Garamond',serif;color:var(--gd);font-size:1.25rem;margin-bottom:.4rem;}
+.contact-box{background:white;border-radius:20px;padding:2.8rem;box-shadow:var(--sh);max-width:680px;margin:0 auto;}
+.fg{margin-bottom:1.3rem;}
+.fg label{display:block;font-weight:700;color:var(--gd);margin-bottom:.4rem;}
+.fg input,.fg textarea{width:100%;padding:.75rem 1rem;border:2px solid #e5e7eb;border-radius:10px;font-size:.95rem;font-family:'Nunito',sans-serif;}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--gd);}
+/* FOOTER */
+footer{background:#111b14;color:var(--cream);padding:3rem 2rem 1.5rem;}
+.fgrid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-bottom:2rem;}
+.fc h3{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1.25rem;margin-bottom:1rem;}
+.fc p,.fc li,.fc a{font-size:.88rem;color:rgba(244,228,193,.72);line-height:2;text-decoration:none;cursor:pointer;}
+.fc ul{list-style:none;}.fc a:hover{color:var(--gold);}
+.fsl{display:flex;align-items:center;gap:.6rem;padding:.45rem .9rem;border-radius:10px;font-weight:700;font-size:.85rem;margin-bottom:.5rem;border:1px solid transparent;text-decoration:none;}
+.fsl.wa{background:rgba(37,211,102,.1);color:#25d366;border-color:rgba(37,211,102,.2);}
+.fsl.tt{background:rgba(255,255,255,.05);color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.1);}
+.fsl.ig{background:rgba(225,48,108,.08);color:#e1306c;border-color:rgba(225,48,108,.2);}
+.fbot{border-top:1px solid #2d4030;padding-top:1.4rem;text-align:center;font-size:.82rem;color:rgba(244,228,193,.45);}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--gd);color:var(--cream);padding:.9rem 1.4rem;border-radius:12px;font-weight:700;z-index:9999;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:300px;}
+.toast.show{transform:translateY(0);opacity:1;}
+@media(max-width:768px){.hero h1{font-size:2.4rem;}.nav-links{display:none;}.mbody{grid-template-columns:1fr;}.crow{grid-template-columns:70px 1fr;}.cprice{grid-column:2;}.stag{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="stbar"><div class="stinner">
+  <span class="stag">&#10024; Suivez-nous pour nos dernieres collections</span>
+  <div class="slinks">
+    <a href="https://wa.me/221773420977" target="_blank" class="slink wa"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.528 5.856L0 24l6.337-1.507A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.852 0-3.592-.5-5.088-1.373l-.364-.216-3.764.896.944-3.659-.235-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</a>
+    <a href="https://www.tiktok.com/@mouride_style?_r=1&_t=ZS-94dbaGRifJ6" target="_blank" class="slink tt"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.16 8.16 0 004.77 1.52V7.01a4.85 4.85 0 01-1-.32z"/></svg> TikTok</a>
+    <a href="https://www.instagram.com/mouride_style_?igsh=MWQ2eW50M3I5Zzk1YQ==" target="_blank" class="slink ig"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+  </div>
+</div></div>
+
+<!-- HEADER -->
+<header><nav>
+  <div class="logo" id="logoBtn">
+    <div class="logo-icon">&#9770;</div>
+    <div><div class="logo-name">Maktab Mouride Style</div><div class="logo-ar">&#x645;&#x643;&#x62A;&#x628; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x62F;</div></div>
+  </div>
+  <ul class="nav-links">
+    <li><a id="nHome" class="active">Accueil</a></li>
+    <li><a id="nShop">Boutique</a></li>
+    <li><a id="nAbout">A Propos</a></li>
+    <li><a id="nContact">Contact</a></li>
+  </ul>
+  <button class="cart-btn" id="cartBtn">&#128722; Panier <span class="cbadge" id="cartCount">0</span></button>
+</nav></header>
+
+<!-- ACCUEIL -->
+<div id="pgHome" class="page active">
+  <section class="hero">
+    <div class="hero-ar">&#x627;&#x644;&#x623;&#x646;&#x627;&#x642;&#x629; &#x648;&#x627;&#x644;&#x631;&#x648;&#x62D;&#x627;&#x646;&#x64A;&#x629;</div>
+    <h1>Maktab Mouride Style</h1>
+    <p>L&apos;Elegance &amp; La Spiritualite Reunies</p>
+    <div class="hero-btns">
+      <button class="btn-gold" id="btnGoShop">Decouvrir la Collection</button>
+      <button class="btn-out"  id="btnGoAbout">En Savoir Plus</button>
+    </div>
+  </section>
+  <div class="section" style="padding-bottom:0;">
+    <h2 class="sec-title">Nos Collections</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="col-section">
+    <div class="col-track-wrap">
+      <div class="col-track" id="colTrack"></div>
+    </div>
+  </div>
+  <div style="height:3rem;"></div>
+  <div class="fstrip"><div class="finner">
+    <div class="fitem"><div class="ficon">&#10024;</div><h3>Qualite Premium</h3><p>Produits soigneusement selectionnes</p></div>
+    <div class="fitem"><div class="ficon">&#128666;</div><h3>Livraison Rapide</h3><p>Senegal &amp; International</p></div>
+    <div class="fitem"><div class="ficon">&#128172;</div><h3>WhatsApp</h3><p>Commandez en un message</p></div>
+    <div class="fitem"><div class="ficon">&#128274;</div><h3>Paiement Securise</h3><p>Transactions 100% securisees</p></div>
+  </div></div>
+</div>
+
+<!-- BOUTIQUE -->
+<div id="pgShop" class="page">
+  <div class="shop-head"><h1>Notre Boutique</h1><p>Decouvrez nos produits authentiques</p></div>
+  <div class="section">
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Rechercher un produit...">
+      <button>&#128269;</button>
+    </div>
+    <div class="prod-grid" id="prodsGrid"></div>
+  </div>
+</div>
+
+<!-- A PROPOS -->
+<div id="pgAbout" class="page">
+  <div class="abt-hero"><h1>A Propos de Nous</h1><p>&#x645;&#x646; &#x646;&#x62D;&#x646;</p></div>
+  <div class="section" style="max-width:880px">
+    <h2 class="sec-title">Notre Histoire</h2><div class="sec-line"></div>
+    <p style="font-size:1.08rem;line-height:1.9;color:#444;margin-bottom:1.4rem">Maktab Mouride Style est ne d&apos;une passion profonde pour la tradition mouride et l&apos;elegance islamique. Nous proposons des produits authentiques qui honorent notre heritage spirituel.</p>
+    <p style="font-size:1.08rem;line-height:1.9;color:#444">Notre mission est de rendre accessible a tous les fideles des articles de qualite exceptionnelle.</p>
+    <h2 class="sec-title" style="margin-top:3rem">Nos Valeurs</h2><div class="sec-line"></div>
+    <div class="val-grid">
+      <div class="vcard"><div class="vi">&#128332;</div><h3>Authenticite</h3><p>Tradition respectee</p></div>
+      <div class="vcard"><div class="vi">&#11088;</div><h3>Excellence</h3><p>Qualite superieure</p></div>
+      <div class="vcard"><div class="vi">&#129309;</div><h3>Confiance</h3><p>Relation solide</p></div>
+      <div class="vcard"><div class="vi">&#128255;</div><h3>Spiritualite</h3><p>Valeurs islamiques</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="pgContact" class="page">
+  <div class="abt-hero"><h1>Contactez-Nous</h1><p>&#x627;&#x62A;&#x635;&#x644; &#x628;&#x646;&#x627;</p></div>
+  <div class="section" style="max-width:760px">
+    <div class="contact-box">
+      <h2 style="font-family:'Cormorant Garamond',serif;color:var(--gd);font-size:1.9rem;text-align:center;margin-bottom:2rem">Envoyez-nous un Message</h2>
+      <form id="cForm">
+        <div class="fg"><label>Nom Complet</label><input type="text" required placeholder="Votre nom"></div>
+        <div class="fg"><label>Email</label><input type="email" required placeholder="votre@email.com"></div>
+        <div class="fg"><label>Telephone</label><input type="tel" placeholder="+221 XX XXX XX XX"></div>
+        <div class="fg"><label>Message</label><textarea required rows="5" placeholder="Votre message..."></textarea></div>
+        <button type="submit" class="btn-gold" style="width:100%;padding:1rem">Envoyer le Message</button>
+      </form>
+      <div style="margin-top:2rem;padding-top:1.5rem;border-top:2px solid #f0f0f0;text-align:center">
+        <p style="font-weight:700;color:var(--gd);margin-bottom:1rem">Ou contactez-nous directement :</p>
+        <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+          <a href="https://wa.me/221773420977" target="_blank" style="display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:#25d366;color:white;border-radius:25px;font-weight:700;font-size:.9rem;text-decoration:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.528 5.856L0 24l6.337-1.507A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.852 0-3.592-.5-5.088-1.373l-.364-.216-3.764.896.944-3.659-.235-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</a>
+          <a href="https://www.instagram.com/mouride_style_?igsh=MWQ2eW50M3I5Zzk1YQ==" target="_blank" style="display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366);color:white;border-radius:25px;font-weight:700;font-size:.9rem;text-decoration:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANIER -->
+<div id="pgCart" class="page">
+  <div class="cart-wrap">
+    <h2 class="cart-title">Mon Panier &#128722;</h2>
+    <div id="cartContent"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <div class="mtop"><h2 id="mTitle">Produit</h2><button class="mclose" id="mClose">&times;</button></div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer><div class="fgrid">
+  <div class="fc"><h3>Maktab Mouride Style</h3><p>Votre boutique de confiance pour l&apos;elegance mouride et islamique.</p></div>
+  <div class="fc"><h3>Navigation</h3><ul>
+    <li><a id="fnHome">Accueil</a></li><li><a id="fnShop">Boutique</a></li>
+    <li><a id="fnAbout">A Propos</a></li><li><a id="fnContact">Contact</a></li>
+  </ul></div>
+  <div class="fc"><h3>Informations</h3><ul><li><a>Livraison</a></li><li><a>Retours</a></li><li><a>Paiement Securise</a></li></ul></div>
+  <div class="fc"><h3>Suivez-nous</h3>
+    <a href="https://wa.me/221773420977" target="_blank" class="fsl wa"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.528 5.856L0 24l6.337-1.507A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.852 0-3.592-.5-5.088-1.373l-.364-.216-3.764.896.944-3.659-.235-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</a>
+    <a href="https://www.tiktok.com/@mouride_style?_r=1&_t=ZS-94dbaGRifJ6" target="_blank" class="fsl tt"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.16 8.16 0 004.77 1.52V7.01a4.85 4.85 0 01-1-.32z"/></svg> TikTok</a>
+    <a href="https://www.instagram.com/mouride_style_?igsh=MWQ2eW50M3I5Zzk1YQ==" target="_blank" class="fsl ig"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+  </div>
+</div>
+<div class="fbot"><p>&copy; 2026 Maktab Mouride Style. Tous droits reserves. &#9770; Touba</p></div>
+</footer>
+
+<script>
+var SK  = 'maktab_products';
+var WAN = '221773420977';
+
+/* helpers */
+function G(id) { return document.getElementById(id); }
+
+function getProds() {
+  try { return JSON.parse(localStorage.getItem(SK)) || []; } catch(e) { return []; }
+}
+
+function isUrl(s) {
+  if (!s) return false;
+  // base64 image
+  if (s.slice(0,5) === 'data:') return true;
+  // http/https URL
+  if (s.slice(0,4) === 'http') return true;
+  // relative path with extension
+  if (/\.(jpg|jpeg|png|webp|gif|svg)(\?|$)/i.test(s)) return true;
+  return false;
+}
+
+function mkImg(src, alt, cls) {
+  var w = document.createElement('div');
+  w.className = cls;
+  if (isUrl(src)) {
+    var i = document.createElement('img');
+    i.src = src; i.alt = alt || '';
+    i.style.cssText = 'width:100%;height:100%;object-fit:cover';
+    i.onerror = function() { w.innerHTML = '<span style="font-size:4rem">&#128205;</span>'; };
+    w.appendChild(i);
+  } else {
+    var s = document.createElement('span');
+    s.className = 'pemoji'; s.textContent = src || '&#128205;';
+    w.appendChild(s);
+  }
+  return w;
+}
+
+/* ---- PANIER ---------------------------------------- */
+var cart = [];
+
+function addToCart(pid) {
+  var prods = getProds(), p = null;
+  for (var i = 0; i < prods.length; i++) if (prods[i].id === pid) { p = prods[i]; break; }
+  if (!p) return;
+  var found = null;
+  for (var i = 0; i < cart.length; i++) if (cart[i].id === pid) { found = cart[i]; break; }
+  if (found) found.qty++;
+  else cart.push({ id:p.id, name:p.name, arabic:p.arabic||'', price:p.price||0, image:p.image||'', qty:1 });
+  updateBadge();
+  toast('"' + p.name + '" ajoute au panier !');
+}
+
+function updateBadge() {
+  var n = 0; for (var i = 0; i < cart.length; i++) n += cart[i].qty;
+  G('cartCount').textContent = n;
+}
+
+/* ---- NAVIGATION ------------------------------------ */
+function goPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  G(id).classList.add('active');
+  ['Home','Shop','About','Contact'].forEach(function(x) {
+    var el = G('n'+x); if (el) el.classList.remove('active');
+  });
+  var map = { pgHome:'Home', pgShop:'Shop', pgAbout:'About', pgContact:'Contact' };
+  var el = G('n' + map[id]); if (el) el.classList.add('active');
+  window.scrollTo(0,0);
+  if (id === 'pgShop')  { buildFilters(); renderProds(); }
+  if (id === 'pgCart')  { renderCart(); }
+  if (id === 'pgHome')  { renderHomeCats(); }
+}
+
+/* ---- FILTRES --------------------------------------- */
+var curFilt = 'all';
+var srch    = '';
+
+function buildFilters() {
+  var prods = getProds(), cats = ['all'];
+  prods.forEach(function(p) { if (cats.indexOf(p.category) < 0) cats.push(p.category); });
+  var bar = G('filterBar'); bar.innerHTML = '';
+  cats.forEach(function(cat, i) {
+    var btn = document.createElement('button');
+    btn.className = 'fbtn' + (i === 0 ? ' active' : '');
+    btn.textContent = cat === 'all' ? 'Tout' : cat;
+    btn.addEventListener('click', function() {
+      curFilt = cat;
+      bar.querySelectorAll('.fbtn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderProds();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+
+
+// Photos par defaut pour chaque categorie (Unsplash)
+var CAT_PHOTOS = {
+  boubou:'Boubou.png',
+  jalabei:'jalabei.jpg',
+  khassida:'xassida.jpg',
+  parfum:'parfum.jpg',
+  kruss:'kruss.jpg',
+  chaussure:'chaussure.jpg',
+  livres:'A doom.jpg'
+};
+
+// Couleur de fond fallback si image ne charge pas
+var CAT_COLORS = {
+  boubou:'#1a472a', jalabei:'#2d5f3d', khassida:'#4a3728',
+  parfum:'#6b3a5c', kruss:'#8b4513', chaussure:'#5c3d2e',
+  livres:'#3d2b1f', autre:'#1a472a'
+};
+
+function renderHomeCats() {
+  var prods = getProds(), cats = [];
+  prods.forEach(function(p) { if (cats.indexOf(p.category) < 0) cats.push(p.category); });
+  var track = G('colTrack');
+  if (!track) return;
+  track.innerHTML = '';
+
+  // Toujours afficher toutes les categories de CAT_PHOTOS + celles avec produits
+  var allKnown = Object.keys(CAT_PHOTOS);
+  cats.forEach(function(c){ if(allKnown.indexOf(c)<0) allKnown.push(c); });
+  var displayCats = allKnown;
+
+  // Compter produits par categorie
+  function countCat(cat) { return prods.filter(function(p){ return p.category === cat; }).length; }
+
+  // Creer les cartes
+  function makeCard(cat) {
+    var cnt = countCat(cat);
+    var photo = CAT_PHOTOS[cat] || ('var photo = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&q=80";');
+    var bgColor = CAT_COLORS[cat] || '#1a472a';
+    var card = document.createElement('div');
+    card.className = 'col-card';
+    card.style.background = bgColor;
+    var imgEl = document.createElement('img');
+    imgEl.src = photo; imgEl.alt = cat; imgEl.loading = 'lazy';
+    imgEl.style.cssText = 'width:100%;height:100%;object-fit:cover;transition:transform .6s';
+    var fallbackUrl = {
+      boubou:'Boubou.jpg',
+      jalabei:'jalabei.jpg',
+      khassida:'xassida.jpg',
+      parfum:'parfum.jpg',
+      kruss:'kruss.jpg',
+      chaussure:'chaussure.jpg',
+      livres:'livre a DOOM.jpg',
+    }[cat];
+    imgEl.onerror = function(){
+      if(fallbackUrl && this.src !== fallbackUrl){ this.src = fallbackUrl; }
+      else { this.style.display='none'; }
+    };
+
+    var overlay = document.createElement('div'); overlay.className = 'col-overlay';
+
+    var label = document.createElement('div'); label.className = 'col-label';
+    var nm = document.createElement('div'); nm.className = 'col-name';
+    nm.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+    var co = document.createElement('div'); co.className = 'col-count';
+    co.textContent = cnt ? cnt + ' article' + (cnt>1?'s':'') : 'Voir la collection';
+    label.appendChild(nm); label.appendChild(co);
+
+    var arrow = document.createElement('div'); arrow.className = 'col-arrow';
+    arrow.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a472a" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>';
+
+    card.appendChild(imgEl);
+    card.appendChild(overlay);
+    card.appendChild(label);
+    card.appendChild(arrow);
+    card.addEventListener('click', function() {
+      goPage('pgShop');
+      if (cnt > 0) filterBy(cat);
+    });
+    return card;
+  }
+
+  // Remplir le track avec 2x les cartes pour boucle infinie
+  var allCats = displayCats.concat(displayCats);
+  allCats.forEach(function(cat) {
+    track.appendChild(makeCard(cat));
+  });
+}
+
+function filterBy(cat) {
+  curFilt = cat; buildFilters();
+  G('filterBar').querySelectorAll('.fbtn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent === cat || (cat === 'all' && b.textContent === 'Tout'));
+  });
+  renderProds();
+}
+
+/* ---- PRODUITS ------------------------------------- */
+function renderProds() {
+  var prods = getProds(), list = prods.filter(function(p) {
+    if (curFilt !== 'all' && p.category !== curFilt) return false;
+    if (srch) {
+      var n = (p.name||'').toLowerCase(), d = (p.description||'').toLowerCase(), a = (p.arabic||'').toLowerCase();
+      if (n.indexOf(srch) < 0 && d.indexOf(srch) < 0 && a.indexOf(srch) < 0) return false;
+    }
+    return true;
+  });
+
+  var grid = G('prodsGrid'); grid.innerHTML = '';
+
+  if (!prods.length) {
+    var d = document.createElement('div'); d.className = 'noprod';
+    d.innerHTML = "<h3>&#128230; Boutique vide</h3><p>Aucun produit n'a encore ete ajoute.</p><a href=\"admin-MMS.html\" target=\"_blank\">Ajouter depuis l'Admin</a>";
+    grid.appendChild(d); return;
+  }
+  if (!list.length) {
+    var d = document.createElement('div'); d.className = 'noprod';
+    d.innerHTML = "<h3>&#128269; Aucun resultat</h3><p>Aucun produit ne correspond a votre recherche.</p>";
+    grid.appendChild(d); return;
+  }
+
+  list.forEach(function(p) {
+    var card = document.createElement('div'); card.className = 'pcard';
+
+    if (p.badge) { var b = document.createElement('div'); b.className = 'pbadge'; b.textContent = p.badge; card.appendChild(b); }
+
+    var imgW = document.createElement('div'); imgW.className = 'pimg';
+    var imgSrc = p.image || '';
+    if (isUrl(imgSrc)) {
+      var img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = p.name || '';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;transition:transform .4s';
+      img.onerror = function() { imgW.innerHTML = '<span class="pemoji">\uD83D\uDECD</span>'; };
+      (function(i){ 
+        card.addEventListener('mouseenter', function() { i.style.transform = 'scale(1.06)'; });
+        card.addEventListener('mouseleave', function() { i.style.transform = ''; });
+      })(img);
+      imgW.appendChild(img);
+    } else {
+      var em = document.createElement('span'); em.className = 'pemoji';
+      em.textContent = imgSrc || '\uD83D\uDECD';
+      imgW.appendChild(em);
+    }
+    card.appendChild(imgW);
+
+    var info = document.createElement('div'); info.className = 'pinfo';
+    var cat = document.createElement('div'); cat.className = 'pcat'; cat.textContent = p.category || ''; info.appendChild(cat);
+    var nm  = document.createElement('h3');  nm.className  = 'pname'; nm.textContent = p.name || ''; info.appendChild(nm);
+    if (p.arabic) { var ar = document.createElement('p'); ar.className = 'par'; ar.textContent = p.arabic; info.appendChild(ar); }
+    var dc = document.createElement('p'); dc.className = 'pdesc'; dc.textContent = p.description || ''; info.appendChild(dc);
+    var pr = document.createElement('div'); pr.className = 'pprice'; pr.textContent = p.price ? p.price.toLocaleString() + ' FCFA' : 'Prix sur demande'; info.appendChild(pr);
+
+    var ac = document.createElement('div'); ac.className = 'pactions';
+    var bA = document.createElement('button'); bA.className = 'badd';  bA.textContent = '+ Ajouter';
+    var bV = document.createElement('button'); bV.className = 'bview'; bV.textContent = 'Voir';
+    (function(pid) {
+      bA.addEventListener('click', function() { addToCart(pid); });
+      bV.addEventListener('click', function() { showDetail(pid); });
+    })(p.id);
+    ac.appendChild(bA); ac.appendChild(bV); info.appendChild(ac);
+    card.appendChild(info);
+    grid.appendChild(card);
+  });
+}
+
+/* ---- MODAL ---------------------------------------- */
+function showDetail(pid) {
+  var prods = getProds(), p = null;
+  prods.forEach(function(x) { if (x.id === pid) p = x; });
+  if (!p) return;
+  G('mTitle').textContent = p.name || '';
+  var body = G('mBody'); body.innerHTML = '';
+
+  var imgW = document.createElement('div'); imgW.className = 'mimg';
+  var mSrc = p.image || '';
+  if (mSrc && (mSrc.slice(0,5) === 'data:' || mSrc.slice(0,4) === 'http' || mSrc.indexOf('/') >= 0)) {
+    var img = document.createElement('img'); img.src = mSrc; img.alt = p.name || '';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover';
+    img.onerror = function() { imgW.innerHTML = '<span style="font-size:4rem">\uD83D\uDECD</span>'; };
+    imgW.appendChild(img);
+  } else { imgW.innerHTML = '<span style="font-size:4rem">' + (mSrc || '\uD83D\uDECD') + '</span>'; }
+  body.appendChild(imgW);
+
+  var info = document.createElement('div');
+  var pText = p.price ? p.price.toLocaleString() + ' FCFA' : 'Prix sur demande';
+  var waMsg = 'Bonjour, je suis interesse par "' + (p.name||'') + '"' + (p.price ? ' a ' + p.price.toLocaleString() + ' FCFA' : '') + '. Merci de confirmer la disponibilite.';
+
+
+  var mCat = document.createElement('p'); mCat.style.cssText = 'color:var(--gold);font-weight:700;text-transform:uppercase;font-size:.78rem;margin-bottom:.4rem'; mCat.textContent = p.category||''; info.appendChild(mCat);
+  var mNm = document.createElement('h3'); mNm.style.cssText = 'font-size:1.7rem;color:var(--gd);margin-bottom:.3rem'; mNm.style.fontFamily = 'Cormorant Garamond,serif'; mNm.textContent = p.name||''; info.appendChild(mNm);
+  if (p.arabic) { var mAr = document.createElement('p'); mAr.style.cssText = 'font-size:1.1rem;color:var(--gm);margin-bottom:.7rem'; mAr.textContent = p.arabic; info.appendChild(mAr); }
+  var mDc = document.createElement('p'); mDc.style.cssText = 'color:#555;line-height:1.85;margin-bottom:1.3rem;font-size:.95rem'; mDc.textContent = p.description||''; info.appendChild(mDc);
+  if (p.stock !== undefined && p.stock !== null && p.stock !== '') { var sc = parseInt(p.stock); var mSt = document.createElement('p'); mSt.style.cssText = 'font-size:.85rem;color:var(--muted);margin-bottom:.6rem'; var stStr = document.createElement('strong'); stStr.style.color = sc>0?'green':'red'; stStr.textContent = sc>0?p.stock+' disponible(s)':'Rupture de stock'; mSt.textContent = 'Stock : '; mSt.appendChild(stStr); info.appendChild(mSt); }
+  var mPr = document.createElement('div'); mPr.style.cssText = 'font-size:2.3rem;font-weight:700;color:var(--gd);margin-bottom:1.3rem'; mPr.style.fontFamily = 'Cormorant Garamond,serif'; mPr.textContent = pText; info.appendChild(mPr);
+  var bAdd = document.createElement('button'); bAdd.className = 'badd'; bAdd.style.cssText = 'width:100%;padding:.95rem;font-size:1rem;margin-bottom:.7rem';
+  bAdd.textContent = '+ Ajouter au Panier';
+  bAdd.addEventListener('click', function() { addToCart(p.id); closeModal(); });
+  info.appendChild(bAdd);
+
+  var waA = document.createElement('a'); waA.className = 'wa-modal'; waA.target = '_blank';
+  waA.href = 'https://wa.me/' + WAN + '?text=' + encodeURIComponent(waMsg);
+  waA.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.528 5.856L0 24l6.337-1.507A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.852 0-3.592-.5-5.088-1.373l-.364-.216-3.764.896.944-3.659-.235-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Commander sur WhatsApp';
+  info.appendChild(waA);
+  body.appendChild(info);
+  G('modal').style.display = 'block';
+}
+
+function closeModal() { G('modal').style.display = 'none'; }
+
+/* ---- PANIER AFFICHAGE ----------------------------- */
+function renderCart() {
+  var cc = G('cartContent'); cc.innerHTML = '';
+  if (!cart.length) {
+    var d = document.createElement('div'); d.className = 'empty-cart';
+    d.innerHTML = '<div style="font-size:3rem;margin-bottom:1rem">&#128722;</div><h3>Panier vide</h3><p>Decouvrez nos produits authentiques</p>';
+    var b = document.createElement('button'); b.className = 'btn-gold'; b.textContent = 'Voir la Boutique';
+    b.addEventListener('click', function() { goPage('pgShop'); }); d.appendChild(b); cc.appendChild(d); return;
+  }
+
+  var total = cart.reduce(function(s,i) { return s + i.price*i.qty; }, 0);
+  var box = document.createElement('div'); box.className = 'cart-box';
+
+  cart.forEach(function(item, idx) {
+    var row = document.createElement('div'); row.className = 'crow';
+    var th = document.createElement('div'); th.className = 'cthumb';
+    if (isUrl(item.image)) {
+      var img = document.createElement('img'); img.src = item.image; img.alt = item.name;
+      img.onerror = function() { th.textContent = '&#128205;'; }; th.appendChild(img);
+    } else { th.textContent = item.image || '&#128205;'; }
+    row.appendChild(th);
+
+    var mid = document.createElement('div');
+    var nm = document.createElement('div'); nm.className = 'cpname'; nm.textContent = item.name; mid.appendChild(nm);
+    if (item.arabic) { var ar = document.createElement('div'); ar.style.cssText = 'color:var(--gm);font-size:.85rem'; ar.textContent = item.arabic; mid.appendChild(ar); }
+    var qc = document.createElement('div'); qc.className = 'qctrl';
+    var bm = document.createElement('button'); bm.className = 'qbtn'; bm.textContent = '-';
+    var qn = document.createElement('span');  qn.className = 'qnum'; qn.textContent = item.qty;
+    var bp = document.createElement('button'); bp.className = 'qbtn'; bp.textContent = '+';
+    var rm = document.createElement('button'); rm.className = 'rmbtn'; rm.textContent = 'Supprimer';
+    (function(i) {
+      bm.addEventListener('click', function() { cart[i].qty -= 1; if (cart[i].qty <= 0) cart.splice(i,1); updateBadge(); renderCart(); });
+      bp.addEventListener('click', function() { cart[i].qty += 1; updateBadge(); renderCart(); });
+      rm.addEventListener('click', function() { cart.splice(i,1); updateBadge(); renderCart(); });
+    })(idx);
+    qc.appendChild(bm); qc.appendChild(qn); qc.appendChild(bp); mid.appendChild(qc); mid.appendChild(rm);
+    row.appendChild(mid);
+
+    var pr = document.createElement('div'); pr.className = 'cprice'; pr.textContent = (item.price*item.qty).toLocaleString() + ' FCFA'; row.appendChild(pr);
+    box.appendChild(row);
+  });
+  cc.appendChild(box);
+
+  var sum = document.createElement('div'); sum.className = 'cart-sum';
+  sum.innerHTML = '<div class="srow"><span>Sous-total</span><span>' + total.toLocaleString() + ' FCFA</span></div><div class="srow"><span>Livraison</span><span>A calculer</span></div><div class="srow stotal"><span>Total</span><span>' + total.toLocaleString() + ' FCFA</span></div>';
+
+  var ck = document.createElement('button'); ck.className = 'ckbtn'; ck.textContent = 'Proceder au Paiement';
+  ck.addEventListener('click', function() { toast('Commande confirmee ! Merci.'); cart = []; updateBadge(); renderCart(); }); sum.appendChild(ck);
+
+  var wa = document.createElement('button'); wa.className = 'wabtn';
+  wa.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.528 5.856L0 24l6.337-1.507A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.852 0-3.592-.5-5.088-1.373l-.364-.216-3.764.896.944-3.659-.235-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Envoyer commande sur WhatsApp';
+  wa.addEventListener('click', function() {
+    if (!cart.length) return;
+    var tot = cart.reduce(function(s,i) { return s+i.price*i.qty; }, 0);
+    var msg = 'Commande Maktab Mouride Style\n\n';
+    cart.forEach(function(item) { msg += '- ' + item.name + ' x' + item.qty + ' : ' + (item.price*item.qty).toLocaleString() + ' FCFA\n'; });
+    msg += '\nTotal: ' + tot.toLocaleString() + ' FCFA\n\nMerci de confirmer la disponibilite et la livraison.';
+    window.open('https://wa.me/' + WAN + '?text=' + encodeURIComponent(msg), '_blank');
+  }); sum.appendChild(wa);
+  cc.appendChild(sum);
+}
+
+/* ---- TOAST ---------------------------------------- */
+function toast(msg) {
+  var t = G('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3200);
+}
+
+/* ---- SYNC ADMIN ----------------------------------- */
+window.addEventListener('storage', function(e) {
+  if (e.key === SK) { buildFilters(); renderProds(); renderHomeCats(); toast('Nouveaux produits disponibles !'); }
+});
+
+/* ---- INIT ----------------------------------------- */
+window.addEventListener('load', function() {
+  function nav(id) { return function() { goPage(id); }; }
+  G('logoBtn').addEventListener('click',   nav('pgHome'));
+  G('nHome').addEventListener('click',     nav('pgHome'));
+  G('nShop').addEventListener('click',     nav('pgShop'));
+  G('nAbout').addEventListener('click',    nav('pgAbout'));
+  G('nContact').addEventListener('click',  nav('pgContact'));
+  G('cartBtn').addEventListener('click',   nav('pgCart'));
+  G('btnGoShop').addEventListener('click', nav('pgShop'));
+  G('btnGoAbout').addEventListener('click',nav('pgAbout'));
+  G('fnHome').addEventListener('click',    nav('pgHome'));
+  G('fnShop').addEventListener('click',    nav('pgShop'));
+  G('fnAbout').addEventListener('click',   nav('pgAbout'));
+  G('fnContact').addEventListener('click', nav('pgContact'));
+  G('mClose').addEventListener('click',    closeModal);
+  G('modal').addEventListener('click',     function(e) { if (e.target === this) closeModal(); });
+  G('searchInput').addEventListener('input', function() { srch = this.value.toLowerCase(); renderProds(); });
+  G('cForm').addEventListener('submit',    function(e) { e.preventDefault(); toast('Message envoye avec succes !'); });
+
+  renderHomeCats();
+  buildFilters();
+  renderProds();
+
+  // Auto-refresh toutes les 2 secondes si la boutique est visible
+  setInterval(function() {
+    var shopPage = document.getElementById('pgShop');
+    if (shopPage && shopPage.classList.contains('active')) {
+      renderProds();
+    }
+  }, 2000);
+});
+</script>
+<!--
+═══════════════════════════════════════════════════════════════════
+  PATCH MAKTAB — À coller juste avant </body> dans boutique (7).html
+  Ce script corrige l'affichage des photos venant de l'admin.
+═══════════════════════════════════════════════════════════════════
+-->
+<script>
+(function patchMaktabBoutique() {
+
+    // ── 1. Clé de stockage utilisée par l'admin ──────────────────
+    const STORAGE_KEY = 'maktab_products';
+    const DB_NAME     = 'maktab_mouride_db';
+    const DB_VERSION  = 2;
+    const STORE       = 'products';
+
+    // ── 2. Ouvrir IndexedDB (même base que l'admin) ──────────────
+    function openIDB() {
+        return new Promise((resolve, reject) => {
+            const req = indexedDB.open(DB_NAME, DB_VERSION);
+            req.onupgradeneeded = e => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE)) {
+                    db.createObjectStore(STORE, { keyPath: 'id', autoIncrement: true });
+                }
+                if (!db.objectStoreNames.contains('meta')) {
+                    db.createObjectStore('meta', { keyPath: 'key' });
+                }
+            };
+            req.onsuccess  = e => resolve(e.target.result);
+            req.onerror    = e => reject(e.target.error);
+        });
+    }
+
+    function idbGetAll(db) {
+        return new Promise((resolve, reject) => {
+            const tx  = db.transaction(STORE, 'readonly');
+            const req = tx.objectStore(STORE).getAll();
+            req.onsuccess = () => resolve(req.result || []);
+            req.onerror   = () => reject(req.error);
+        });
+    }
+
+    // ── 3. Restaurer les images __img_{id} depuis localStorage ──
+    function restoreImages(products) {
+        return products.map(p => {
+            if (p.image && p.image.startsWith('__img_')) {
+                const key  = 'maktab_img_' + p.id;
+                const data = localStorage.getItem(key);
+                if (data) return { ...p, image: data };
+            }
+            return p;
+        });
+    }
+
+    // ── 4. Charger les produits (IDB d'abord, localStorage ensuite)
+    async function loadProducts() {
+        let products = [];
+        try {
+            const db = await openIDB();
+            products = await idbGetAll(db);
+        } catch(e) {}
+
+        if (!products.length) {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) products = JSON.parse(raw);
+            } catch(e) {}
+        }
+
+        return restoreImages(products);
+    }
+
+    // ── 5. Fonction utilitaire : détecter si c'est une vraie image
+    function isRealImage(img) {
+        return img && (
+            img.startsWith('data:image') ||
+            img.startsWith('http')       ||
+            img.startsWith('//')         ||
+            img.includes('.')
+        );
+    }
+
+    // ── 6. Patch de la fonction getProducts() originale ──────────
+    //    On remplace le localStorage.getItem pour renvoyer
+    //    les données complètes avec vraies images.
+    let _cachedProducts = null;
+
+    async function getPatchedProducts() {
+        if (!_cachedProducts) {
+            _cachedProducts = await loadProducts();
+        }
+        return _cachedProducts;
+    }
+
+    // Écrase getProducts() si elle existe (définie dans boutique (7).html)
+    window.__maktabPatchReady = false;
+    loadProducts().then(products => {
+        _cachedProducts = products;
+        window.__maktabPatchReady = true;
+
+        // Remplace getProducts globalement
+        if (typeof window.getProducts === 'function') {
+            window.getProducts = function() { return _cachedProducts; };
+        }
+
+        // Si la boutique stocke les produits dans une variable globale, on la met à jour
+        const globalVars = ['products', 'allProducts', 'productList', 'items'];
+        globalVars.forEach(varName => {
+            if (Array.isArray(window[varName]) && window[varName].length === 0) {
+                window[varName] = _cachedProducts;
+            }
+        });
+
+        // Déclenche le re-rendu si une fonction render* existe
+        const renderFns = ['renderProducts', 'renderList', 'render', 'displayProducts', 'loadProducts', 'init'];
+        for (const fn of renderFns) {
+            if (typeof window[fn] === 'function') {
+                try { window[fn](); } catch(e) {}
+                break;
+            }
+        }
+
+        // Fix des images manquantes dans les cartes déjà rendues
+        fixRenderedImages(products);
+    });
+
+    // ── 7. Réparer les images déjà affichées dans le DOM ─────────
+    function fixRenderedImages(products) {
+        const productMap = {};
+        products.forEach(p => { productMap[p.id] = p; });
+
+        // Cherche toutes les images cassées ou emoji dans les cartes produit
+        document.querySelectorAll('[data-id], [data-product-id]').forEach(card => {
+            const id = parseInt(card.dataset.id || card.dataset.productId);
+            const p  = productMap[id];
+            if (!p) return;
+            const img = card.querySelector('img');
+            if (img && isRealImage(p.image)) {
+                img.src = p.image;
+            }
+        });
+    }
+
+    // ── 8. BroadcastChannel : mise à jour en temps réel ──────────
+    //    Quand l'admin ajoute/modifie un produit, la boutique se met à jour
+    try {
+        const channel = new BroadcastChannel('maktab_sync');
+        channel.onmessage = async (e) => {
+            if (e.data && e.data.type === 'updated') {
+                _cachedProducts = null; // vider le cache
+                _cachedProducts = await loadProducts();
+
+                // Re-render
+                if (typeof window.getProducts === 'function') {
+                    window.getProducts = function() { return _cachedProducts; };
+                }
+                const renderFns = ['renderProducts', 'renderList', 'render', 'displayProducts'];
+                for (const fn of renderFns) {
+                    if (typeof window[fn] === 'function') {
+                        try { window[fn](); } catch(e) {}
+                        break;
+                    }
+                }
+            }
+        };
+    } catch(e) {}
+
+    // ── 9. Patch localStorage.getItem pour intercepter les appels ─
+    //    Certaines boutiques appellent directement localStorage.getItem('maktab_products')
+    const _origGetItem = localStorage.getItem.bind(localStorage);
+    localStorage.getItem = function(key) {
+        if (key === STORAGE_KEY && _cachedProducts && _cachedProducts.length > 0) {
+            // Retourner les données patchées (avec vraies images)
+            return JSON.stringify(_cachedProducts);
+        }
+        return _origGetItem(key);
+    };
+
+    console.log('[Maktab Patch] ✅ Patch boutique activé — IndexedDB + images résolues');
+
+})();
+</script>
+</body>
+</html>
