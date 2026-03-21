@@ -203,7 +203,7 @@
 
   <div class="boutique-banner">
     <p>Les produits publiés ici s'affichent <b>automatiquement</b> sur votre boutique.</p>
-    <a href="index.html" class="btn-go-boutique" target="_blank">🛍️ Ouvrir la boutique</a>
+    <a href="inedx.html" class="btn-go-boutique" target="_blank">🛍️ Ouvrir la boutique</a>
   </div>
 
   <!-- PHONE -->
@@ -263,7 +263,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyDJw0PLY-cw0dhvwxOZfLfChGIY4gc0MXQ",
   authDomain: "ayah-crochet.firebaseapp.com",
-  databaseURL: "https://ayah-crochet-default-rtdb.firebaseio.com",
+  databaseURL: "https://ayah-crochet-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ayah-crochet",
   storageBucket: "ayah-crochet.firebasestorage.app",
   messagingSenderId: "64311095838",
@@ -531,7 +531,7 @@ function renderPromoManager() {
           <div class="prod-thumb">${p.image?`<img src="${p.image}" alt="${p.name}">`:"🧶"}</div>
           <div class="prod-info">
             <div class="prod-name">${p.name}</div>
-            <div class="prod-meta">${Number(p.price).toLocaleString("fr-FR")} Franc CFA· ${p.category}${p.rupture?" · <span style='color:#e03060'>Rupture</span>":""}</div>
+            <div class="prod-meta">${Number(p.price).toLocaleString("fr-FR")} DA · ${p.category}${p.rupture?" · <span style='color:#e03060'>Rupture</span>":""}</div>
           </div>
           <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
             <label class="toggle-switch" title="Rupture de stock">
