@@ -238,7 +238,7 @@
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Prix (DA)</label>
+        <label>Prix (Franc CFA)</label>
         <input type="number" id="prodPrice" placeholder="1500">
       </div>
       <div class="form-group">
@@ -531,7 +531,7 @@ function renderPromoManager() {
           <div class="prod-thumb">${p.image?`<img src="${p.image}" alt="${p.name}">`:"🧶"}</div>
           <div class="prod-info">
             <div class="prod-name">${p.name}</div>
-            <div class="prod-meta">${Number(p.price).toLocaleString("fr-FR")} DA · ${p.category}${p.rupture?" · <span style='color:#e03060'>Rupture</span>":""}</div>
+            <div class="prod-meta">${Number(p.price).toLocaleString("fr-FR")} Franc CFA  · ${p.category}${p.rupture?" · <span style='color:#e03060'>Rupture</span>":""}</div>
           </div>
           <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
             <label class="toggle-switch" title="Rupture de stock">
