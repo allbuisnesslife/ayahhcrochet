@@ -179,6 +179,9 @@
     .cart-sidebar{width:100vw;}
   }
 </style>
+<!-- Firebase compat -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 </head>
 <body>
 
@@ -194,7 +197,7 @@
   <div class="cart-footer" id="cartFooter" style="display:none">
     <div class="cart-total-row">
       <span class="cart-total-label">Total</span>
-      <span class="cart-total-price" id="cartTotal">0 Franc CFA</span>
+      <span class="cart-total-price" id="cartTotal">0 DA</span>
     </div>
     <a href="https://wa.me/+221703108776" class="btn-checkout" id="checkoutBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -299,35 +302,32 @@
 
 <div id="toast"></div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
+<script>
 const firebaseConfig = {
   apiKey: "AIzaSyDJw0PLY-cw0dhvwxOZfLfChGIY4gc0MXQ",
   authDomain: "ayah-crochet.firebaseapp.com",
+  databaseURL: "https://ayah-crochet-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ayah-crochet",
   storageBucket: "ayah-crochet.firebasestorage.app",
   messagingSenderId: "64311095838",
-  appId: "1:64311095838:web:436b65b5f2dea47b57f40f",
-  databaseURL: "https://ayah-crochet-default-rtdb.firebaseio.com"
+  appId: "1:64311095838:web:436b65b5f2dea47b57f40f"
 };
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
 let products = JSON.parse(localStorage.getItem("maille_products") || "[]");
 let adminPhone = localStorage.getItem("maille_phone") || "";
 let cart = JSON.parse(localStorage.getItem("maille_cart") || "[]");
 
-// Écoute en temps réel Firebase — dès que l'admin publie, la boutique se met à jour
-onValue(ref(db, "maille_products"), (snap) => {
+// Écoute en temps réel — dès que l'admin publie, la boutique se met à jour
+db.ref("maille_products").on("value", (snap) => {
   if (snap.exists() && snap.val()) {
     products = snap.val();
     localStorage.setItem("maille_products", JSON.stringify(products));
     renderProducts();
   }
 });
-onValue(ref(db, "maille_phone"), (snap) => {
+db.ref("maille_phone").on("value", (snap) => {
   if (snap.exists() && snap.val()) {
     adminPhone = snap.val();
     localStorage.setItem("maille_phone", adminPhone);
@@ -376,8 +376,8 @@ function renderProducts() {
         ${onPromo&&p.promoEnd?`<div class="countdown-box"><span class="cd-label">⏳ Expire dans</span><span class="countdown-timer" id="cd-${p.id}">--:--:--</span></div>`:""}
         <div class="product-footer">
           <div>
-            ${onPromo?`<span class="price-old">${Number(p.price).toLocaleString("fr-FR")} Franc CFA</span>`:""}
-            <span class="product-price ${onPromo?"price-new":""}">${Number(dispPrice).toLocaleString("fr-FR")} Franc CFA</span>
+            ${onPromo?`<span class="price-old">${Number(p.price).toLocaleString("fr-FR")} DA</span>`:""}
+            <span class="product-price ${onPromo?"price-new":""}">${Number(dispPrice).toLocaleString("fr-FR")} DA</span>
           </div>
           ${p.rupture?`<span style="background:#e8dede;color:#b0a0a0;padding:10px 18px;border-radius:30px;font-size:.72rem;font-weight:500;">Indisponible</span>`:`
           <div class="product-actions">
@@ -434,13 +434,13 @@ function updateCartUI() {
   cnt.textContent = qty;
   if (!cart.length) { items.innerHTML=`<div class="cart-empty"><span class="ce-icon">🛍️</span><p>Votre panier est vide…</p></div>`; foot.style.display="none"; return; }
   foot.style.display = "block";
-  total.textContent = sum.toLocaleString("fr-FR")+" Franc CFA";
+  total.textContent = sum.toLocaleString("fr-FR")+" DA";
   items.innerHTML = cart.map(item => `
     <div class="cart-item">
       <div class="cart-item-img">${item.image?`<img src="${item.image}" alt="${item.name}">`:"🧶"}</div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">${Number(item.price).toLocaleString("fr-FR")} Franc CFA</div>
+        <div class="cart-item-price">${Number(item.price).toLocaleString("fr-FR")} DA</div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
           <span class="qty-val">${item.qty}</span>
@@ -450,14 +450,14 @@ function updateCartUI() {
       <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
     </div>`).join("");
   const clean = adminPhone.replace(/\D/g,"");
-  const lines = cart.map(i => `• ${i.name} x${i.qty} — ${(Number(i.price)*i.qty).toLocaleString("fr-FR")} Franc CFA`).join("\n");
-  const msg = encodeURIComponent(`Bonjour 👋, voici ma commande 🧶\n\n${lines}\n\n💰 Total : ${sum.toLocaleString("fr-FR")} Franc CFA`);
+  const lines = cart.map(i => `• ${i.name} x${i.qty} — ${(Number(i.price)*i.qty).toLocaleString("fr-FR")} DA`).join("\n");
+  const msg = encodeURIComponent(`Bonjour 👋, voici ma commande 🧶\n\n${lines}\n\n💰 Total : ${sum.toLocaleString("fr-FR")} DA`);
   btn.href = `https://wa.me/${clean||"221703108776"}?text=${msg}`;
 }
 
 function orderLink(name, price) {
   const clean = (adminPhone || "+221703108776").replace(/\D/g,"");
-  const ps = price ? ` — ${Number(price).toLocaleString("fr-FR")} Franc CFA` : "";
+  const ps = price ? ` — ${Number(price).toLocaleString("fr-FR")} DA` : "";
   return `https://wa.me/${clean}?text=${encodeURIComponent(`Bonjour 👋, je voudrais commander : *${name}*${ps} 🧶`)}`;
 }
 
