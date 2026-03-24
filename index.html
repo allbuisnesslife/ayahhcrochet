@@ -320,13 +320,17 @@ let adminPhone = localStorage.getItem("maille_phone") || "";
 let cart = JSON.parse(localStorage.getItem("maille_cart") || "[]");
 
 // Écoute en temps réel — dès que l'admin publie, la boutique se met à jour
+// Firebase listeners — mise à jour en temps réel
 db.ref("maille_products").on("value", (snap) => {
   if (snap.exists() && snap.val()) {
     products = snap.val();
     localStorage.setItem("maille_products", JSON.stringify(products));
-    renderProducts();
+  } else {
+    products = [];
   }
+  renderProducts();
 });
+
 db.ref("maille_phone").on("value", (snap) => {
   if (snap.exists() && snap.val()) {
     adminPhone = snap.val();
@@ -336,9 +340,11 @@ db.ref("maille_phone").on("value", (snap) => {
 });
 
 function init() {
-  renderProducts();
-  updatePhoneDisplay();
   updateCartUI();
+  // Products will render automatically via Firebase listener above
+  // Show cached products from localStorage while waiting for Firebase
+  if (products.length) renderProducts();
+  updatePhoneDisplay();
 }
 
 function updatePhoneDisplay() {
